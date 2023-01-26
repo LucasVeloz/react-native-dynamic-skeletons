@@ -1,18 +1,33 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-dynamic-skeletons';
+import { StyleSheet, View } from 'react-native';
+import { SkeletonContainer } from 'react-native-dynamic-skeletons';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [isLoading, setIsLoading] = useState(true);
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <SkeletonContainer
+        isLoading={isLoading}
+        style={{
+          backgroundColor: '#e1e1e1',
+        }}
+        colors={['#e1e1e1', '#f5f5f5', '#e1e1e1']}
+      >
+        {[{ width: 100 }, { width: 200 }].map((style, index) => (
+          <View
+            style={[styles.box, { width: style.width }]}
+            key={`box-${index}`}
+          />
+        ))}
+      </SkeletonContainer>
     </View>
   );
 }
@@ -26,6 +41,7 @@ const styles = StyleSheet.create({
   box: {
     width: 60,
     height: 60,
+    backgroundColor: 'red',
     marginVertical: 20,
   },
 });
