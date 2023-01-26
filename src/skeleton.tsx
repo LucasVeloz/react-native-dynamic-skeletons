@@ -5,7 +5,6 @@ import type { SkeletonProps } from './types';
 
 const { width } = Dimensions.get('window');
 
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 export const Skeleton = ({ colors, style }: SkeletonProps) => {
   const animationValue = useRef(new Animated.Value(0)).current;
 
@@ -31,13 +30,24 @@ export const Skeleton = ({ colors, style }: SkeletonProps) => {
   }, [animationValue]);
 
   return (
-    <View style={[{ overflow: 'hidden' }, style]}>
-      <AnimatedLinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={colors || ['#e1e1e1', '#f5f5f5', '#e1e1e1']}
-        style={[{ ...StyleSheet.absoluteFillObject }, skeletonXStyle]}
-      />
+    <View style={[styles.overlay, style]}>
+      <Animated.View style={[StyleSheet.absoluteFillObject, skeletonXStyle]}>
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={colors || ['#e1e1e1', '#f5f5f5', '#e1e1e1']}
+          style={styles.container}
+        />
+      </Animated.View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  overlay: {
+    overflow: 'hidden',
+  },
+});
