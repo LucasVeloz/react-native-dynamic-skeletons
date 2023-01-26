@@ -20,6 +20,7 @@ export default function App() {
           backgroundColor: '#e1e1e1',
         }}
         colors={['#e1e1e1', '#f5f5f5', '#e1e1e1']}
+        animation="bottomTop"
       >
         {[{ width: 100 }, { width: 200 }].map((style, index) => (
           <View

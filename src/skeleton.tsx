@@ -1,23 +1,25 @@
 import React, { useEffect, useRef } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Animated, Dimensions, StyleSheet, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import type { SkeletonProps } from './types';
+import { animationStyle, linearGradientPositions } from './utils';
 
-const { width } = Dimensions.get('window');
-
-export const Skeleton = ({ colors, style }: SkeletonProps) => {
+export const Skeleton = ({
+  colors,
+  style,
+  animation = 'leftRight',
+}: SkeletonProps) => {
+  const COLORS = colors || ['#e1e1e1', '#f5f5f5', '#e1e1e1'];
   const animationValue = useRef(new Animated.Value(0)).current;
 
-  const skeletonXStyle = {
-    transform: [
-      {
-        translateX: animationValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: [-width, width],
-        }),
-      },
-    ],
+  const getOutput = (output: string[] | number[]) => {
+    return animationValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: output,
+    });
   };
+
+  const { start, end } = linearGradientPositions(animation);
 
   useEffect(() => {
     Animated.loop(
@@ -31,11 +33,16 @@ export const Skeleton = ({ colors, style }: SkeletonProps) => {
 
   return (
     <View style={[styles.overlay, style]}>
-      <Animated.View style={[StyleSheet.absoluteFillObject, skeletonXStyle]}>
+      <Animated.View
+        style={[
+          StyleSheet.absoluteFillObject,
+          animationStyle(animation, getOutput),
+        ]}
+      >
         <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={colors || ['#e1e1e1', '#f5f5f5', '#e1e1e1']}
+          start={start}
+          end={end}
+          colors={COLORS}
           style={styles.container}
         />
       </Animated.View>

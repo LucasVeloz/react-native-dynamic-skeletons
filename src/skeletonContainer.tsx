@@ -5,8 +5,8 @@ import type { SkeletonContainerProps } from './types';
 export const SkeletonContainer = ({
   children,
   isLoading,
-  colors,
   style,
+  ...rest
 }: SkeletonContainerProps) => {
   const styles = Children.map(children, (child) => {
     const innerStyle = child.props?.style;
@@ -24,7 +24,7 @@ export const SkeletonContainer = ({
             <Skeleton
               style={itemStyle.current}
               key={`skeleton-${index}`}
-              colors={colors}
+              {...rest}
             />
           ))
         : children}
