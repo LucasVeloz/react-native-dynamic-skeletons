@@ -1,11 +1,13 @@
 # React Native Dynamic Skeletons
 [![npm version](https://badge.fury.io/js/react-native-dynamic-skeletons.svg)](https://badge.fury.io/js/react-native-dynamic-skeletons)
 
-- [React Native Dynamic Skeletons](#react-native-dynamic-skeletons)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Props](#props)
-  - [Animation Types](#animation-types)
+
+<img
+  width="220px"
+  align="right"
+  src="./demos/leftRight.gif"
+/>
+
 
 React Native Dynamic Skeletons is an easy, customizable, and dynamic solution to create beautiful loading experiences in your React Native apps.
 
@@ -15,8 +17,17 @@ The skeletons can be easily customized to match your app's design, and the libra
 
 Developed in Typescript, this library is fully compatible with both iOS and Android. And it's also compatible with Expo.
 
-
-
+## Table of Contents
+- [React Native Dynamic Skeletons](#react-native-dynamic-skeletons)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Props](#props)
+  - [Animation Types](#animation-types)
+    - [Left to Right](#left-to-right)
+    - [Right to Left](#right-to-left)
+    - [Top to Bottom](#top-to-bottom)
+    - [Bottom to Top](#bottom-to-top)
 
 
 ## Installation
@@ -71,7 +82,7 @@ export default function App() {
 | isLoading | boolean | **required** | Whether the skeleton should be displayed or not.
 animationType | 'leftRight' \| 'rightLeft' \| 'topBottom' \| 'bottomTop' | 'leftRight' | The animation direction. Descripted in the [Animation Types](#animation-types) section.
 colors | string[] | ['#e1e1e1', '#f2f2f2', '#e1e1e1'] | The colors of the gradient.
-style | ViewStyle | {} | The style of the skeleton.
+style | ViewStyle | { backgroundColor: '#e1e1e1' } | The style of the skeleton.
 duration | number | 1000 | The duration of the animation in milliseconds.
 
 
@@ -86,3 +97,31 @@ The animation type can be one of the following:
 | rightLeft | The skeleton moves from right to left. |
 | topBottom | The skeleton moves from top to bottom. |
 | bottomTop | The skeleton moves from bottom to top. |
+
+
+### Left to Right
+<img
+  width="220px"
+  src="./demos/leftRight.gif"
+/>
+
+### Right to Left
+
+<img
+  width="220px"
+  src="./demos/rightLeft.gif"
+/>
+
+### Top to Bottom
+
+<img
+  width="220px"
+  src="./demos/topBottom.gif"
+/>
+
+### Bottom to Top
+
+<img
+  width="220px"
+  src="./demos/bottomTop.gif"
+/>
