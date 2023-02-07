@@ -14,14 +14,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <SkeletonContainer
-        isLoading={isLoading}
-        style={{
-          backgroundColor: '#e1e1e1',
-        }}
-        colors={['#e1e1e1', '#f5f5f5', '#e1e1e1']}
-        animation="bottomTop"
-      >
+      <SkeletonContainer isLoading={isLoading}>
         {[{ width: 100 }, { width: 200 }].map((style, index) => (
           <View
             style={[styles.box, { width: style.width }]}
