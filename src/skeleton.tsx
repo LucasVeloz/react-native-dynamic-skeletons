@@ -7,7 +7,8 @@ import { animationStyle, linearGradientPositions } from './utils';
 export const Skeleton = ({
   colors,
   style,
-  animation = 'leftRight',
+  animationType = 'leftRight',
+  duration,
 }: SkeletonProps) => {
   const COLORS = colors || ['#e1e1e1', '#f5f5f5', '#e1e1e1'];
   const animationValue = useRef(new Animated.Value(0)).current;
@@ -19,24 +20,24 @@ export const Skeleton = ({
     });
   };
 
-  const { start, end } = linearGradientPositions(animation);
+  const { start, end } = linearGradientPositions(animationType);
 
   useEffect(() => {
     Animated.loop(
       Animated.timing(animationValue, {
         toValue: 1,
-        duration: 2000,
+        duration: duration || 1000,
         useNativeDriver: true,
       })
     ).start();
-  }, [animationValue]);
+  }, [animationValue, duration]);
 
   return (
     <View style={[styles.overlay, style]}>
       <Animated.View
         style={[
           StyleSheet.absoluteFillObject,
-          animationStyle(animation, getOutput),
+          animationStyle(animationType, getOutput),
         ]}
       >
         <LinearGradient

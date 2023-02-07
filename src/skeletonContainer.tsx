@@ -10,10 +10,13 @@ export const SkeletonContainer = ({
 }: SkeletonContainerProps) => {
   const styles = Children.map(children, (child) => {
     const innerStyle = child.props?.style;
+    const defaultBackgroundColor = {
+      backgroundColor: '#e1e1e1',
+    };
     return {
       current: Array.isArray(style)
-        ? [...innerStyle, style]
-        : [innerStyle, style],
+        ? [...innerStyle, defaultBackgroundColor, style]
+        : [innerStyle, defaultBackgroundColor, style],
     };
   });
 

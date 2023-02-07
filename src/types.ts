@@ -11,5 +11,6 @@ export interface SkeletonContainerProps extends SkeletonProps {
 export interface SkeletonProps {
   colors?: string[];
   style?: StyleProp<ViewStyle>;
-  animation?: keyof typeof ANIMATION_OUTPUT;
+  animationType?: keyof typeof ANIMATION_OUTPUT;
+  duration?: number;
 }

@@ -1,72 +1,88 @@
-# react-native-dynamic-skeletons
+# React Native Dynamic Skeletons
+[![npm version](https://badge.fury.io/js/react-native-dynamic-skeletons.svg)](https://badge.fury.io/js/react-native-dynamic-skeletons)
 
-Simple way to implements skeleton/shimmer loader
+- [React Native Dynamic Skeletons](#react-native-dynamic-skeletons)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Props](#props)
+  - [Animation Types](#animation-types)
+
+React Native Dynamic Skeletons is an easy, customizable, and dynamic solution to create beautiful loading experiences in your React Native apps.
+
+This library provides a simple and intuitive way to create dynamic skeletons that mimic the appearance of your app's content.
+
+The skeletons can be easily customized to match your app's design, and the library provides a wide range of options to create dynamic and engaging loading experiences.
+
+Developed in Typescript, this library is fully compatible with both iOS and Android. And it's also compatible with Expo.
+
+
+
+
 
 ## Installation
 
-```sh
-npm install react-native-dynamic-skeletons
+
+
+```bash
+  npm install react-native-dynamic-skeletons
 ```
+
+or:
+
+```bash
+  yarn add react-native-dynamic-skeletons
+```
+
 
 ## Usage
 
-```tsx
-import React, { useEffect, useState } from 'react';
+import react-native-dynamic-skeletons
 
-import { StyleSheet, View } from 'react-native';
+```typescript
 import { SkeletonContainer } from 'react-native-dynamic-skeletons';
-
-export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
-
-  return (
-    <View style={styles.container}>
-      <SkeletonContainer
-        isLoading={isLoading}
-        style={{
-          backgroundColor: '#e1e1e1',
-        }}
-        colors={['#e1e1e1', '#f5f5f5', '#e1e1e1']}
-      >
-        {[{ width: 100 }, { width: 200 }].map((style, index) => (
-          <View
-            style={[styles.box, { width: style.width }]}
-            key={`box-${index}`}
-          />
-        ))}
-      </SkeletonContainer>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    backgroundColor: 'red',
-    marginVertical: 20,
-  },
-});
-
 ```
 
-## Contributing
+Wrap your content with SkeletonContainer
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+```tsx
+export default function App() {
+  return (
+    <SkeletonContainer isLoading={true}>
+      <View
+        style={{
+          backgroundColor: 'red',
+          width: 100,
+          height: 100,
+          borderRadius: 50,
+        }}
+      />
+      <Text>My App</Text>
+      <Text>Some content</Text>
+    </SkeletonContainer>
+  );
+}
+```
 
-## License
+## Props
 
-MIT
 
----
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| isLoading | boolean | **required** | Whether the skeleton should be displayed or not.
+animationType | 'leftRight' \| 'rightLeft' \| 'topBottom' \| 'bottomTop' | 'leftRight' | The animation direction. Descripted in the [Animation Types](#animation-types) section.
+colors | string[] | ['#e1e1e1', '#f2f2f2', '#e1e1e1'] | The colors of the gradient.
+style | ViewStyle | {} | The style of the skeleton.
+duration | number | 1000 | The duration of the animation in milliseconds.
+
+
+
+## Animation Types
+
+The animation type can be one of the following:
+
+| Type | Description |
+| --- | --- |
+| leftRight | The skeleton moves from left to right. |
+| rightLeft | The skeleton moves from right to left. |
+| topBottom | The skeleton moves from top to bottom. |
+| bottomTop | The skeleton moves from bottom to top. |
