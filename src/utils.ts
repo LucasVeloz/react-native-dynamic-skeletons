@@ -1,12 +1,12 @@
 import { Animated, Dimensions, ViewStyle } from 'react-native';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const ANIMATION_OUTPUT = {
   leftRight: [-width, width],
   rightLeft: [width, -width],
-  topBottom: [-width, width],
-  bottomTop: [width, -width],
+  topBottom: [-height, height],
+  bottomTop: [height, -height],
 };
 
 const animationStyle = (

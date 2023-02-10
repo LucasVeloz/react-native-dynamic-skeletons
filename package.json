@@ -1,7 +1,7 @@
 {
   "name": "react-native-dynamic-skeletons",
   "version": "0.3.0",
-  "description": "Simple way to implements skeleton/shimmer loader",
+  "description": "React Native Dynamic Skeletons is an easy, customizable, and dynamic solution to create beautiful loading experiences in your React Native apps.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -39,7 +39,15 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "skeleton",
+    "loader",
+    "shimmer",
+    "animation",
+    "react-native-skeleton",
+    "react-native-shimmer",
+    "react-native-skeleton-loader",
+    "react-native-shimmer-loader"
   ],
   "repository": "https://github.com/LucasVeloz/react-native-dynamic-skeletons",
   "author": "LucasVeloz <lurucell@gmail.com> (https://github.com/LucasVeloz)",
