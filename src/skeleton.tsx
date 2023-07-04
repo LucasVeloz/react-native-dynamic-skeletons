@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import { Animated, StyleSheet, View } from 'react-native';
 import type { SkeletonProps } from './types';
 import { animationStyle, linearGradientPositions } from './utils';
