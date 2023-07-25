@@ -17,6 +17,12 @@ The skeletons can be easily customized to match your app's design, and the libra
 
 Developed in Typescript, this library is fully compatible with both iOS and Android. And it's also compatible with Expo.
 
+This library does not use any third-party dependencies, and it's fully customizable.
+
+You decide how the skeleton should look like. By providing a custom component, you can create skeletons that match your app's design.
+
+You can use react-native-linear-gradient, expo-linear-gradient, react-native-skia or any other library.
+
 ## Table of Contents
 - [React Native Dynamic Skeletons](#react-native-dynamic-skeletons)
   - [Table of Contents](#table-of-contents)
@@ -53,12 +59,22 @@ import react-native-dynamic-skeletons
 import { SkeletonContainer } from 'react-native-dynamic-skeletons';
 ```
 
-Wrap your content with SkeletonContainer
+Wrap your content with SkeletonContainer and provide the Gradient component.
 
 ```tsx
+import { LinearGradient } from 'expo-linear-gradient';
+import {
+  SkeletonContainer,
+  GradientProps,
+} from 'react-native-dynamic-skeletons';
+
+const Gradient = (props: GradientProps) => <LinearGradient {...props} />;
 export default function App() {
   return (
-    <SkeletonContainer isLoading={true}>
+    <SkeletonContainer
+      isLoading={true}
+      Gradient={Gradient}
+    >
       <View
         style={{
           backgroundColor: 'red',
@@ -84,6 +100,7 @@ animationType | 'leftRight' \| 'rightLeft' \| 'topBottom' \| 'bottomTop' | 'left
 colors | string[] | ['#e1e1e1', '#f2f2f2', '#e1e1e1'] | The colors of the gradient.
 style | ViewStyle | { backgroundColor: '#e1e1e1' } | The style of the skeleton.
 duration | number | 1000 | The duration of the animation in milliseconds.
+Gradient | function that returns gradient component | **required** | The gradient component. It can be react-native-linear-gradient, expo-linear-gradient, react-native-skia or any other library.
 
 
 

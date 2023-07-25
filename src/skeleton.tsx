@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Animated, StyleSheet, View } from 'react-native';
 import type { SkeletonProps } from './types';
 import { animationStyle, linearGradientPositions } from './utils';
@@ -9,6 +8,7 @@ export const Skeleton = ({
   style,
   animationType = 'leftRight',
   duration,
+  Gradient,
 }: SkeletonProps) => {
   const COLORS = colors || ['#e1e1e1', '#f5f5f5', '#e1e1e1'];
   const animationValue = useRef(new Animated.Value(0)).current;
@@ -40,7 +40,7 @@ export const Skeleton = ({
           animationStyle(animationType, getOutput),
         ]}
       >
-        <LinearGradient
+        <Gradient
           start={start}
           end={end}
           colors={COLORS}
