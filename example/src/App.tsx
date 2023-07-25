@@ -1,7 +1,13 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
-import { SkeletonContainer } from 'react-native-dynamic-skeletons';
+import {
+  SkeletonContainer,
+  type GradientProps,
+} from 'react-native-dynamic-skeletons';
+
+const Gradient = (props: GradientProps) => <LinearGradient {...props} />;
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +24,7 @@ export default function App() {
         isLoading={isLoading}
         animationType="leftRight"
         duration={1000}
+        Gradient={Gradient}
       >
         {new Array(5).fill('').map((_, index) => (
           <View style={styles.box} key={index}>
