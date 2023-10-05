@@ -6,8 +6,16 @@ import {
   SkeletonContainer,
   type GradientProps,
 } from 'react-native-dynamic-skeletons';
+import styled from 'styled-components/native';
 
 const Gradient = (props: GradientProps) => <LinearGradient {...props} />;
+
+const Teste = styled.View`
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 20px;
+`;
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +23,7 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 10000);
+    }, 3000);
   }, []);
 
   return (
@@ -26,13 +34,27 @@ export default function App() {
         duration={1000}
         Gradient={Gradient}
       >
-        {new Array(5).fill('').map((_, index) => (
+        <Teste />
+        <View
+          style={{
+            marginTop: 30,
+            backgroundColor: 'red',
+            width: 300,
+            height: 200,
+          }}
+        />
+        <View style={styles.box}>
+          <Text style={styles.text}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          </Text>
+        </View>
+        {/* {new Array(5).fill('').map((_, index) => (
           <View style={styles.box} key={index}>
             <Text style={styles.text}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             </Text>
           </View>
-        ))}
+        ))} */}
       </SkeletonContainer>
     </View>
   );

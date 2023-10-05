@@ -1,6 +1,7 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { Skeleton } from './skeleton';
 import type { SkeletonContainerProps } from './types';
+import { createChildrensWithStyles } from './utils';
 
 export const SkeletonContainer = ({
   children,
@@ -8,27 +9,13 @@ export const SkeletonContainer = ({
   style,
   ...rest
 }: SkeletonContainerProps) => {
-  const styles = Children.map(children, (child) => {
-    const innerStyle = child.props?.style;
-    const defaultBackgroundColor = {
-      backgroundColor: '#e1e1e1',
-    };
-    return {
-      current: Array.isArray(style)
-        ? [...innerStyle, defaultBackgroundColor, style]
-        : [innerStyle, defaultBackgroundColor, style],
-    };
-  });
+  const formattedStyles = createChildrensWithStyles(children, style);
 
   return (
     <>
       {isLoading
-        ? styles.map((itemStyle, index) => (
-            <Skeleton
-              style={itemStyle.current}
-              key={`skeleton-${index}`}
-              {...rest}
-            />
+        ? formattedStyles.map((itemStyle, index) => (
+            <Skeleton style={itemStyle} key={`skeleton-${index}`} {...rest} />
           ))
         : children}
     </>
