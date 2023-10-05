@@ -1,6 +1,6 @@
 {
   "name": "react-native-dynamic-skeletons",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "description": "React Native Dynamic Skeletons is an easy, customizable, and dynamic solution to create beautiful loading experiences in your React Native apps.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
